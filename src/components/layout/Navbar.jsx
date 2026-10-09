@@ -121,68 +121,92 @@ export default function Navbar() {
             </button>
           </div>
         </nav>
-
-        {/* Mobile menu */}
-        <div
-          id="mobile-menu"
-          className={`fixed inset-x-0 bottom-0 top-[80px] z-40 overflow-y-auto bg-cream transition-all duration-300 xl:hidden ${
-            open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-3 opacity-0"
-          }`}
-          aria-hidden={!open}
-        >
-          <ul className="container-site flex flex-col py-6">
-            {navigation.map((item, i) => (
-              <li
-                key={item.to}
-                className="border-b border-navy-900/10"
-                style={{
-                  transition: "transform .4s ease, opacity .4s ease",
-                  transitionDelay: open ? `${60 + i * 40}ms` : "0ms",
-                  transform: open ? "none" : "translateY(8px)",
-                  opacity: open ? 1 : 0,
-                }}
-              >
-                <NavLink
-                  to={item.to}
-                  end={item.to === "/"}
-                  tabIndex={open ? 0 : -1}
-                  className={({ isActive }) =>
-                    `flex min-h-[56px] items-center justify-between font-serif text-2xl font-semibold ${isActive ? "text-gold-dark" : "text-navy-900"}`
-                  }
-                >
-                  {item.label}
-                  <span aria-hidden className="text-base text-gold">
-                    →
-                  </span>
-                </NavLink>
-              </li>
-            ))}
-            <li className="mt-8">
-              <a
-                href={links.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                tabIndex={open ? 0 : -1}
-                className="btn-gold w-full"
-              >
-                Admissions Open {school.admissionYear} <ArrowRight className="h-4 w-4" aria-hidden />
-              </a>
-            </li>
-            <li className="mt-6 space-y-2 text-sm text-muted">
-              {contact.phones.map((p) => (
-                <a
-                  key={p.tel}
-                  href={`tel:${p.tel}`}
-                  tabIndex={open ? 0 : -1}
-                  className="flex min-h-[44px] items-center gap-2"
-                >
-                  <Phone className="h-4 w-4 text-gold-dark" aria-hidden /> {p.display}
-                </a>
-              ))}
-            </li>
-          </ul>
-        </div>
       </header>
+
+      {/*
+        Mobile menu — a full-screen panel rendered OUTSIDE the header.
+        (The header uses a blur effect, which would trap a fixed panel inside its 80px height.)
+      */}
+      <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
+        aria-hidden={!open}
+        className={`fixed inset-0 z-[70] flex flex-col bg-cream transition-all duration-300 xl:hidden ${
+          open ? "visible opacity-100" : "pointer-events-none invisible opacity-0"
+        }`}
+      >
+        {/* Panel header: logo + close button */}
+        <div className="flex h-[80px] shrink-0 items-center justify-between border-b border-navy-900/10 bg-white px-5 sm:px-8">
+          <Logo onClick={() => setOpen(false)} />
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(false);
+              toggleRef.current?.focus();
+            }}
+            tabIndex={open ? 0 : -1}
+            aria-label="Close menu"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-peach text-navy-900 transition hover:bg-gold-soft"
+          >
+            <X className="h-6 w-6" />
+          </button>
+        </div>
+
+        <ul className="container-site flex flex-1 flex-col overflow-y-auto py-6">
+          {navigation.map((item, i) => (
+            <li
+              key={item.to}
+              className="border-b border-navy-900/10"
+              style={{
+                transition: "transform .4s ease, opacity .4s ease",
+                transitionDelay: open ? `${60 + i * 40}ms` : "0ms",
+                transform: open ? "none" : "translateY(8px)",
+                opacity: open ? 1 : 0,
+              }}
+            >
+              <NavLink
+                to={item.to}
+                onClick={() => setOpen(false)}
+                end={item.to === "/"}
+                tabIndex={open ? 0 : -1}
+                className={({ isActive }) =>
+                  `flex min-h-[56px] items-center justify-between font-serif text-2xl font-semibold ${isActive ? "text-gold-dark" : "text-navy-900"}`
+                }
+              >
+                {item.label}
+                <span aria-hidden className="text-base text-gold">
+                  →
+                </span>
+              </NavLink>
+            </li>
+          ))}
+          <li className="mt-8">
+            <a
+              href={links.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              tabIndex={open ? 0 : -1}
+              className="btn-gold w-full"
+            >
+              Admissions Open {school.admissionYear} <ArrowRight className="h-4 w-4" aria-hidden />
+            </a>
+          </li>
+          <li className="mt-6 space-y-2 text-sm text-muted">
+            {contact.phones.map((p) => (
+              <a
+                key={p.tel}
+                href={`tel:${p.tel}`}
+                tabIndex={open ? 0 : -1}
+                className="flex min-h-[44px] items-center gap-2"
+              >
+                <Phone className="h-4 w-4 text-gold-dark" aria-hidden /> {p.display}
+              </a>
+            ))}
+          </li>
+        </ul>
+      </div>
     </>
   );
 }
