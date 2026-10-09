@@ -6,7 +6,7 @@
  */
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import CountUp from "../ui/CountUp";
+import CountUp from "../ui/Countup";
 import { heroHighlights, links, photos, school } from "../../data/schoolData";
 
 export default function HeroSection() {
