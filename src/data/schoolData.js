@@ -35,14 +35,14 @@ import {
    keep the same import name and every section using it updates automatically. */
 import campusImg from "../assets/illustrations/campus.webp";
 import classroomImg from "../assets/illustrations/classroom.webp";
-import playgroundImg from "../assets/illustrations/playground.webp";
-import diningImg from "../assets/illustrations/dining.webp";
+import playgroundImg from "../assets/illustrations/playground.png";
+import diningImg from "../assets/illustrations/dining.png";
 import busImg from "../assets/illustrations/bus.webp";
-import labImg from "../assets/illustrations/lab.webp";
+import labImg from "../assets/illustrations/lab.png";
 import libraryImg from "../assets/illustrations/library.webp";
-import hostelImg from "../assets/illustrations/hostel.webp";
-import educatorsImg from "../assets/illustrations/educators.webp";
-import appImg from "../assets/illustrations/app.webp";
+import hostelImg from "../assets/illustrations/hostel.png";
+import educatorsImg from "../assets/illustrations/educators.png";
+import appImg from "../assets/illustrations/app.png";
 
 /* Real photos supplied by the school (.webp) */
 import campusGatePhoto from "../assets/photos/campus-gate.webp";
@@ -52,7 +52,7 @@ import studentWritingPhoto from "../assets/photos/student-writing.webp";
 import studentsGroupPhoto from "../assets/photos/students-group.webp";
 import classroomPhoto from "../assets/photos/classroom.webp";
 import libraryPhoto from "../assets/photos/library.webp";
-import computerLabPhoto from "../assets/photos/computer-lab.webp";
+import computerLabPhoto from "../assets/photos/computer-lab.png";
 import busesPhoto from "../assets/photos/school-buses.webp";
 
 export const photos = {
