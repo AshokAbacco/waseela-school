@@ -14,7 +14,7 @@ import { testimonials } from "../../data/schoolData";
 const styles = `
 @keyframes tm-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes tm-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-.tm-track { display: flex; width: max-content; gap: 1.25rem; }
+.tm-track { display: flex; align-items: stretch; width: max-content; gap: 1.25rem; }
 .tm-left  { animation: tm-left 70s linear infinite; }
 .tm-right { animation: tm-right 70s linear infinite; }
 .tm-row:hover .tm-track, .tm-row:focus-within .tm-track { animation-play-state: paused; }
@@ -37,7 +37,7 @@ function Card({ t }) {
   const placeholder = !t.quote;
   return (
     <figure
-      className={`flex w-[300px] shrink-0 flex-col rounded-[22px] border p-6 shadow-card transition duration-300 hover:z-10 hover:scale-[1.06] hover:shadow-lift sm:w-[340px] ${
+      className={`flex h-full min-h-[290px] w-[300px] shrink-0 flex-col rounded-[22px] border p-6 shadow-card transition duration-300 hover:z-10 hover:scale-[1.06] hover:shadow-lift sm:w-[340px] ${
         placeholder
           ? "border-dashed border-gold/50 bg-white/70"
           : "border-navy-900/[0.07] bg-white"
@@ -89,7 +89,11 @@ function Row({ items, direction }) {
         className={`tm-track ${direction === "left" ? "tm-left" : "tm-right"}`}
       >
         {[...items, ...items].map((t, i) => (
-          <li key={i} aria-hidden={i >= items.length || undefined}>
+          <li
+            key={i}
+            className="flex"
+            aria-hidden={i >= items.length || undefined}
+          >
             <Card t={t} />
           </li>
         ))}
