@@ -15,7 +15,15 @@ import Logo from "../ui/Logo";
 import WhatsAppIcon from "../ui/WhatsAppIcon";
 import EmailText from "../ui/EmailText";
 import PlayStoreBadge from "../ui/PlayStoreBadge";
-import { contact, developer, links, navigation, school, schoolApp, social } from "../../data/schoolData";
+import {
+  contact,
+  developer,
+  links,
+  navigation,
+  school,
+  schoolApp,
+  social,
+} from "../../data/schoolData";
 
 const socialIcons = { Facebook, Instagram, YouTube: Youtube };
 
@@ -32,7 +40,12 @@ function DeveloperCredit() {
       <span>Designed &amp; Developed by</span>
       <span className="inline-flex items-center gap-2">
         {logoOk && developer.logo && (
-          <img src={developer.logo} alt="" className="h-5 w-auto" onError={() => setLogoOk(false)} />
+          <img
+            src={developer.logo}
+            alt=""
+            className="h-5 w-auto"
+            onError={() => setLogoOk(false)}
+          />
         )}
         <span className="font-semibold text-gold-dark transition-colors group-hover:text-navy-900">
           {developer.name}
@@ -60,7 +73,8 @@ export default function Footer() {
         <div>
           <Logo size="lg" />
           <p className="mt-6 max-w-xs text-sm leading-relaxed">
-            {school.tagline} — nurturing young minds with knowledge, values and confidence.
+            {school.tagline} — nurturing young minds with knowledge, values and
+            confidence.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <a
@@ -90,13 +104,19 @@ export default function Footer() {
         </div>
 
         <nav aria-labelledby="footer-links">
-          <h2 id="footer-links" className="font-sans text-sm font-bold !text-navy-900">
+          <h2
+            id="footer-links"
+            className="font-sans text-sm font-bold !text-navy-900"
+          >
             Quick Links
           </h2>
           <div className="mt-5 grid grid-cols-2 gap-x-6">
             {[
               navigation.slice(0, half),
-              [...navigation.slice(half), { label: "Privacy Policy", to: "/privacy" }],
+              [
+                ...navigation.slice(half),
+                { label: "Privacy Policy", to: "/privacy" },
+              ],
             ].map((col, ci) => (
               <ul key={ci} className="space-y-1">
                 {col.map((n) => (
@@ -115,7 +135,9 @@ export default function Footer() {
         </nav>
 
         <div>
-          <h2 className="font-sans text-sm font-bold !text-navy-900">Contact Us</h2>
+          <h2 className="font-sans text-sm font-bold !text-navy-900">
+            Contact Us
+          </h2>
           <address className="mt-5 space-y-3.5 text-sm not-italic">
             <a
               href={links.mapsDirections}
@@ -123,16 +145,31 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="flex gap-3 hover:text-gold-dark"
             >
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-dark" aria-hidden />
+              <MapPin
+                className="mt-0.5 h-4 w-4 shrink-0 text-gold-dark"
+                aria-hidden
+              />
               <span>{contact.addressLines.join(" ")}</span>
             </a>
             {contact.phones.map((p) => (
-              <a key={p.tel} href={`tel:${p.tel}`} className="flex items-center gap-3 hover:text-gold-dark">
-                <Phone className="h-4 w-4 shrink-0 text-gold-dark" aria-hidden /> {p.display}
+              <a
+                key={p.tel}
+                href={`tel:${p.tel}`}
+                className="flex items-center gap-3 hover:text-gold-dark"
+              >
+                <Phone
+                  className="h-4 w-4 shrink-0 text-gold-dark"
+                  aria-hidden
+                />{" "}
+                {p.display}
               </a>
             ))}
             {contact.emails.map((e) => (
-              <a key={e} href={`mailto:${e}`} className="flex items-center gap-3 hover:text-gold-dark">
+              <a
+                key={e}
+                href={`mailto:${e}`}
+                className="flex items-center gap-3 hover:text-gold-dark"
+              >
                 <Mail className="h-4 w-4 shrink-0 text-gold-dark" aria-hidden />
                 <span>
                   <EmailText email={e} />
@@ -141,15 +178,20 @@ export default function Footer() {
             ))}
             {contact.officeHours.length > 0 && (
               <p className="flex items-center gap-3">
-                <Clock className="h-4 w-4 shrink-0 text-gold-dark" aria-hidden />{" "}
-                {contact.officeHours[0].hours}
+                <Clock
+                  className="h-4 w-4 shrink-0 text-gold-dark"
+                  aria-hidden
+                />{" "}
+                {contact.officeHoursSummary || contact.officeHours[0].hours}
               </p>
             )}
           </address>
         </div>
 
         <div>
-          <h2 className="font-sans text-sm font-bold !text-navy-900">School App</h2>
+          <h2 className="font-sans text-sm font-bold !text-navy-900">
+            School App
+          </h2>
           <p className="mt-5 text-sm leading-relaxed">
             Stay connected with notices, homework and updates on the{" "}
             <strong className="text-navy-900">{schoolApp.name}</strong> app.
@@ -159,7 +201,8 @@ export default function Footer() {
             to="/privacy"
             className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-gold-dark underline-offset-4 hover:underline"
           >
-            <ShieldCheck className="h-3.5 w-3.5" aria-hidden /> App &amp; data privacy policy
+            <ShieldCheck className="h-3.5 w-3.5" aria-hidden /> App &amp; data
+            privacy policy
           </Link>
         </div>
       </div>

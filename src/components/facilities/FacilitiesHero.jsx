@@ -11,6 +11,7 @@ export default function FacilitiesHero() {
       text="Comfortable classrooms, a library, computer and science labs, a spacious playground, healthy food, transport and boarding."
       image={photos.buses}
       imageAlt="Waseela English Medium School buses parked in front of the school building"
+      position="center 55%"
     />
   );
 }

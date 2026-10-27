@@ -2,7 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { ArrowRight, Mail, Menu, Phone, Smartphone, X } from "lucide-react";
 import Logo from "../ui/Logo";
-import { contact, links, navigation, playStoreHref, school, schoolApp } from "../../data/schoolData";
+import {
+  contact,
+  links,
+  navigation,
+  playStoreHref,
+  school,
+  schoolApp,
+} from "../../data/schoolData";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -58,24 +65,36 @@ export default function Navbar() {
               href={`tel:${contact.phones[0].tel}`}
               className="inline-flex items-center gap-1.5 hover:text-gold-dark"
             >
-              <Phone className="h-3.5 w-3.5 text-gold" aria-hidden /> {contact.phones[0].display}
+              <Phone className="h-3.5 w-3.5 text-gold" aria-hidden />{" "}
+              {contact.phones[0].display}
             </a>
-            <a href={links.email} className="inline-flex items-center gap-1.5 hover:text-gold-dark">
-              <Mail className="h-3.5 w-3.5 text-gold" aria-hidden /> {contact.emails[0]}
+            <a
+              href={links.email}
+              className="inline-flex items-center gap-1.5 hover:text-gold-dark"
+            >
+              <Mail className="h-3.5 w-3.5 text-gold" aria-hidden />{" "}
+              {contact.emails[0]}
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <a href={`tel:${contact.phones[1].tel}`} className="hidden hover:text-gold-dark lg:inline">
+            <a
+              href={`tel:${contact.phones[1].tel}`}
+              className="hidden hover:text-gold-dark lg:inline"
+            >
               {contact.phones[1].display}
             </a>
-            <span aria-hidden className="hidden h-3 w-px bg-navy-900/20 lg:inline-block" />
+            <span
+              aria-hidden
+              className="hidden h-3 w-px bg-navy-900/20 lg:inline-block"
+            />
             <a
               href={playStoreHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 font-medium hover:text-gold-dark"
             >
-              <Smartphone className="h-3.5 w-3.5 text-gold" aria-hidden /> {schoolApp.name} App
+              <Smartphone className="h-3.5 w-3.5 text-gold" aria-hidden />{" "}
+              {schoolApp.name} App
             </a>
           </div>
         </div>
@@ -86,13 +105,20 @@ export default function Navbar() {
           scrolled ? "shadow-[0_8px_30px_-14px_rgba(15,30,61,0.25)]" : ""
         }`}
       >
-        <nav aria-label="Main" className="container-site flex h-[80px] items-center justify-between gap-6">
+        <nav
+          aria-label="Main"
+          className="container-site flex h-[80px] items-center justify-between gap-6"
+        >
           <Logo />
 
           <ul className="hidden items-center gap-7 xl:flex">
             {navigation.map((item) => (
               <li key={item.to}>
-                <NavLink to={item.to} end={item.to === "/"} className={linkClass}>
+                <NavLink
+                  to={item.to}
+                  end={item.to === "/"}
+                  className={linkClass}
+                >
                   {item.label}
                 </NavLink>
               </li>
@@ -134,7 +160,9 @@ export default function Navbar() {
         aria-label="Site menu"
         aria-hidden={!open}
         className={`fixed inset-0 z-[70] flex flex-col bg-cream transition-all duration-300 xl:hidden ${
-          open ? "visible opacity-100" : "pointer-events-none invisible opacity-0"
+          open
+            ? "visible opacity-100"
+            : "pointer-events-none invisible opacity-0"
         }`}
       >
         {/* Panel header: logo + close button */}
@@ -190,7 +218,8 @@ export default function Navbar() {
               tabIndex={open ? 0 : -1}
               className="btn-gold w-full"
             >
-              Admissions Open {school.admissionYear} <ArrowRight className="h-4 w-4" aria-hidden />
+              Admissions Open {school.admissionYear} · {school.classesShort}{" "}
+              <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
           </li>
           <li className="mt-6 space-y-2 text-sm text-muted">
@@ -201,7 +230,8 @@ export default function Navbar() {
                 tabIndex={open ? 0 : -1}
                 className="flex min-h-[44px] items-center gap-2"
               >
-                <Phone className="h-4 w-4 text-gold-dark" aria-hidden /> {p.display}
+                <Phone className="h-4 w-4 text-gold-dark" aria-hidden />{" "}
+                {p.display}
               </a>
             ))}
           </li>

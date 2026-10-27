@@ -5,7 +5,7 @@
  * The four highlight items come from `heroHighlights` in data/schoolData.js.
  */
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, GraduationCap } from "lucide-react";
 import CountUp from "../ui/Countup";
 import { heroHighlights, links, photos, school } from "../../data/schoolData";
 
@@ -16,7 +16,7 @@ export default function HeroSection() {
       className="relative flex flex-col overflow-hidden bg-[#FFFBF3] lg:block"
     >
       {/* ---------- Photo (right side on desktop, below the text on phones) ---------- */}
-      <div className="relative order-2 aspect-[16/9] w-full lg:absolute lg:inset-y-0 lg:left-[20%] lg:right-0 lg:aspect-auto">
+      <div className="relative order-2 aspect-[16/9] w-full lg:absolute lg:inset-y-0 lg:left-[25%] lg:right-0 lg:aspect-auto">
         <img
           src={photos.campusGate}
           alt="Waseela English Medium School main gate and school building"
@@ -92,6 +92,10 @@ export default function HeroSection() {
       {/* ---------- Copy ---------- */}
       <div className="container-site relative z-10 order-1 py-12 sm:py-14 lg:pb-36 lg:pt-16 xl:pt-20">
         <div className="max-w-[470px]">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-white/80 px-4 py-1.5 text-[0.72rem] font-bold text-navy-900 shadow-card">
+            <GraduationCap className="h-4 w-4 text-gold-dark" aria-hidden />
+            Admissions Open {school.admissionYear} · {school.classesRange}
+          </p>
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-gold-dark sm:text-[0.74rem]">
             A place to learn, grow and succeed
           </p>

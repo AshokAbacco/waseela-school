@@ -11,6 +11,7 @@ export default function MissionHero() {
       text={`${school.pillars.join(" | ")} — put into practice every day.`}
       image={photos.studentWriting}
       imageAlt="A Waseela student writing in class"
+      position="65% 30%"
     />
   );
 }

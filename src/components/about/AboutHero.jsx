@@ -10,7 +10,8 @@ export default function AboutHero() {
       heading={about.heroHeading}
       text={about.heroText}
       image={photos.campusStudents}
-      imageAlt="Waseela students at the school entrance"
+      imageAlt="Waseela English Medium School gate with smiling students"
+      position="70% center"
     />
   );
 }

@@ -6,12 +6,14 @@ import PillarsSection from "../components/vision/PillarsSection";
 import AdmissionCTA from "../components/shared/AdmissionCTA";
 import { useSeo } from "../hooks/useSeo";
 import { seo } from "../data/schoolData";
+import ClassesSection from "../components/home/ClassesSection";
 
 export default function Vision() {
   useSeo({ ...seo.vision, path: "/vision" });
   return (
     <>
       <VisionHero />
+      <ClassesSection />
       <StatementSection />
       <FocusSection />
       <PillarsSection />

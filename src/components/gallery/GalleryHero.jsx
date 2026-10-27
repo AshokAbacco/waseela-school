@@ -9,8 +9,9 @@ export default function GalleryHero() {
       label="School Gallery"
       heading="Moments That Make Us Proud"
       text="A look around our campus, classrooms and everyday school life. Tap any photo to view it full screen."
-      image={photos.studentsGroup}
-      imageAlt="Smiling Waseela students holding books"
+      image={photos.library}
+      imageAlt="The Waseela school library with shelves of books"
+      position="center 45%"
     />
   );
 }
