@@ -86,6 +86,26 @@ export const images = {
 /** Replace with the live domain before launch (also in public/robots.txt and sitemap.xml). */
 export const SITE_URL = "https://www.example.com";
 
+/**
+ * ADMISSION YEAR — updates automatically, no editing needed.
+ * Admissions for the next session open every 1 November (India time):
+ *   1 Jan – 31 Oct 2026  →  "2026–2027"
+ *   1 Nov 2026 onwards   →  "2027–2028"
+ * To change the switch-over month, edit SWITCH_MONTH (1 = January … 11 = November).
+ */
+const SWITCH_MONTH = 11;
+export function getAdmissionYear(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "numeric",
+  }).formatToParts(date);
+  const year = Number(parts.find((p) => p.type === "year").value);
+  const month = Number(parts.find((p) => p.type === "month").value);
+  const start = month >= SWITCH_MONTH ? year + 1 : year;
+  return `${start}–${start + 1}`;
+}
+
 export const school = {
   name: "Waseela English Medium School",
   nameUpper: "WASEELA ENGLISH MEDIUM SCHOOL",
@@ -96,8 +116,8 @@ export const school = {
   motto: { learn: "Enter to Learn", lead: "Exit to Lead" },
   pillars: ["Quality Education", "Value-Based Learning", "Future-Ready"],
   posterLine: "Building strong foundations with quality education.",
-  /** From the admissions poster. Update when the next session opens. */
-  admissionYear: "2025–26",
+  /** Changes by itself every 1 November — see getAdmissionYear() above. */
+  admissionYear: getAdmissionYear(),
   /** Classes offered — change here and every page updates. */
   classesRange: "Nursery to 8th Standard",
   classesShort: "Nursery – 8th Std",
@@ -828,7 +848,6 @@ export const testimonials = [
       "We appreciate the school's commitment to education and personal development. It is important to us that our child grows in both knowledge and confidence.",
   }, // 30
 ];
-
 
 export const news = [];
 export const principal = null;
