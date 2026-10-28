@@ -1,22 +1,24 @@
 /**
  * HOME › PARENT TESTIMONIALS
- * Animated school crest above the heading, then two rows of cards that glide in opposite directions. Hovering a row pauses it,
- * and the card under the pointer zooms in slightly.
- * Cards come from `testimonials` in data/schoolData.js — add real parent feedback there.
- * Cards with an empty `quote` show as clearly-marked placeholders.
+ * Animated school crest above the heading, then two rows of cards that glide in opposite directions.
+ * Hovering a row pauses it, and the card under the pointer zooms in slightly.
+ * Shows only the first HOME_TESTIMONIALS cards — the full list is on the /testimonials page.
+ * Data: data/testimonialsData.js · Card design: components/shared/TestimonialCard.jsx
  */
-import { Quote } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import Reveal from "../ui/Reveal";
 import SectionHeading from "../ui/SectionHeading";
 import AnimatedCrest from "../ui/AnimatedCrest";
-import { testimonials } from "../../data/schoolData";
+import TestimonialCard from "../shared/TestimonialCard";
+import { HOME_TESTIMONIALS, testimonials } from "../../data/testimonialsData";
 
 const styles = `
 @keyframes tm-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes tm-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 .tm-track { display: flex; align-items: stretch; width: max-content; gap: 1.25rem; }
-.tm-left  { animation: tm-left 70s linear infinite; }
-.tm-right { animation: tm-right 70s linear infinite; }
+.tm-left  { animation: tm-left 45s linear infinite; }
+.tm-right { animation: tm-right 45s linear infinite; }
 .tm-row:hover .tm-track, .tm-row:focus-within .tm-track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .tm-left, .tm-right { animation: none; }
@@ -24,66 +26,12 @@ const styles = `
 }
 `;
 
-function initials(name) {
-  return name
-    .split(" ")
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
-
-function Card({ t }) {
-  const placeholder = !t.quote;
-  return (
-    <figure
-      className={`flex h-full min-h-[290px] w-[300px] shrink-0 flex-col rounded-[22px] border p-6 shadow-card transition duration-300 hover:z-10 hover:scale-[1.06] hover:shadow-lift sm:w-[340px] ${
-        placeholder
-          ? "border-dashed border-gold/50 bg-white/70"
-          : "border-navy-900/[0.07] bg-white"
-      }`}
-    >
-      <div className="flex items-start justify-between">
-        <Quote
-          className="h-8 w-8 rotate-180 fill-gold/80 text-gold/80"
-          aria-hidden
-        />
-        {placeholder && (
-          <span className="rounded-full bg-gold-soft px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-gold-dark">
-            Placeholder
-          </span>
-        )}
-      </div>
-      <blockquote
-        className={`mt-4 flex-1 text-[0.95rem] leading-relaxed ${placeholder ? "italic text-muted" : "text-navy-900/85"}`}
-      >
-        {placeholder
-          ? "Add a real parent’s feedback here in schoolData.js → testimonials."
-          : `“${t.quote}”`}
-      </blockquote>
-      <figcaption className="mt-5 flex items-center gap-3 border-t border-navy-900/[0.07] pt-4">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#F7C976] to-[#D9922F] text-sm font-bold text-white">
-          {initials(t.name)}
-        </span>
-        <span className="leading-tight">
-          <span className="block font-bold text-navy-900">{t.name}</span>
-          <span className="text-xs text-muted">{t.detail}</span>
-        </span>
-      </figcaption>
-    </figure>
-  );
-}
-
-function Row({ items, direction }) {
+function Row({ items, direction, label }) {
   // the list is rendered twice so the loop is seamless
   return (
     <div
       className="tm-row overflow-hidden py-4 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
-      aria-label={
-        direction === "left"
-          ? "Parent testimonials, row 1"
-          : "Parent testimonials, row 2"
-      }
+      aria-label={label}
     >
       <ul
         className={`tm-track ${direction === "left" ? "tm-left" : "tm-right"}`}
@@ -94,7 +42,10 @@ function Row({ items, direction }) {
             className="flex"
             aria-hidden={i >= items.length || undefined}
           >
-            <Card t={t} />
+            <TestimonialCard
+              t={t}
+              className="min-h-[300px] w-[300px] shrink-0 hover:scale-[1.05] sm:w-[340px]"
+            />
           </li>
         ))}
       </ul>
@@ -104,7 +55,9 @@ function Row({ items, direction }) {
 
 export default function TestimonialsSection() {
   if (testimonials.length === 0) return null;
-  const half = Math.ceil(testimonials.length / 2);
+  const shown = testimonials.slice(0, HOME_TESTIMONIALS);
+  const half = Math.ceil(shown.length / 2);
+
   return (
     <section
       aria-labelledby="testimonials-heading"
@@ -126,10 +79,28 @@ export default function TestimonialsSection() {
           text="Hear from the parents who are part of the Waseela family."
         />
       </div>
+
       <Reveal className="relative mt-10 space-y-2">
-        <Row items={testimonials.slice(0, half)} direction="left" />
-        <Row items={testimonials.slice(half)} direction="right" />
+        <Row
+          items={shown.slice(0, half)}
+          direction="left"
+          label="Parent testimonials, row 1"
+        />
+        <Row
+          items={shown.slice(half)}
+          direction="right"
+          label="Parent testimonials, row 2"
+        />
       </Reveal>
+
+      {testimonials.length > shown.length && (
+        <Reveal className="container-site relative mt-10 flex justify-center">
+          <Link to="/testimonials" className="btn-gold">
+            View All {testimonials.length} Testimonials{" "}
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
+        </Reveal>
+      )}
     </section>
   );
 }

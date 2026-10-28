@@ -107,7 +107,7 @@ export function getAdmissionYear(date = new Date()) {
 }
 
 export const school = {
-  name: "Waseela English Medium School",
+  name: "waseela English Medium School",
   nameUpper: "WASEELA ENGLISH MEDIUM SCHOOL",
   shortName: "Waseela School",
   foundation: "Waseela Foundation",
@@ -175,7 +175,7 @@ export const contact = {
     { display: "+91 79013 14488", tel: "+917901314488" },
     { display: "+91 70934 17093", tel: "+917093417093" },
   ],
-  emails: ["Waseelaenglishmediumschool@gmail.com"],
+  emails: ["waseelaenglishmediumschool@gmail.com"],
   /**
    * The poster lists two enquiry numbers but no dedicated WhatsApp line.
    * The first enquiry number is used — change here if the school uses another.
@@ -185,45 +185,49 @@ export const contact = {
    * Office hours (school timezone: Asia/Kolkata). `open` / `close` are 24-hour "HH:MM".
    * Used by the Contact page "Plan Your Visit" table (with a "Today" tag and live Open/Closed status) and the footer.
    */
-  officeHoursSummary: "Mon – Sat: 9:00 AM – 5:00 PM",
+  officeHoursSummary: "Mon – Sat: 8:30 AM – 4:30 PM",
   officeHours: [
     {
       day: "Monday",
-      hours: "9:00 AM – 5:00 PM",
-      open: "09:00",
-      close: "17:00",
+      hours: "8:30 AM – 4:30 PM",
+      open: "08:30",
+      close: "16:30",
     },
     {
       day: "Tuesday",
-      hours: "9:00 AM – 5:00 PM",
-      open: "09:00",
-      close: "17:00",
+      hours: "8:30 AM – 4:30 PM",
+      open: "08:30",
+      close: "16:30",
     },
     {
       day: "Wednesday",
-      hours: "9:00 AM – 5:00 PM",
-      open: "09:00",
-      close: "17:00",
+      hours: "8:30 AM – 4:30 PM",
+      open: "08:30",
+      close: "16:30",
     },
     {
       day: "Thursday",
-      hours: "9:00 AM – 5:00 PM",
-      open: "09:00",
-      close: "17:00",
+      hours: "8:30 AM – 4:30 PM",
+      open: "08:30",
+      close: "16:30",
     },
     {
       day: "Friday",
-      hours: "9:00 AM – 5:00 PM",
-      open: "09:00",
-      close: "17:00",
+      hours: "8:30 AM – 4:30 PM",
+      open: "08:30",
+      close: "16:30",
     },
     {
       day: "Saturday",
-      hours: "9:00 AM – 5:00 PM",
-      open: "09:00",
-      close: "17:00",
+      hours: "8:30 AM – 4:30 PM",
+      open: "08:30",
+      close: "16:30",
     },
-    { day: "Sunday", hours: "Closed", closed: true },
+    {
+      day: "Sunday",
+      hours: "Closed",
+      closed: true,
+    },
   ],
 };
 
@@ -267,6 +271,7 @@ export const navigation = [
   { label: "Mission", to: "/mission" },
   { label: "Facilities", to: "/facilities" },
   { label: "Gallery", to: "/gallery" },
+  { label: "Testimonials", to: "/testimonials" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -659,196 +664,6 @@ export const academics = {
  * news: [{ date: "2026-10-12", title: "Annual Day", text: "..." }]
  * principal: { name: "…", message: "…", photo: importedImage }
  */
-/**
- * Parent testimonials — shown on the home page in two moving rows.
- * Replace each placeholder with REAL feedback collected from parents (with their permission):
- *   { name: "Mrs. Fathima", detail: "Parent of Class 3 student", quote: "Their words…" }
- * While `quote` is empty the card shows as a clearly-marked placeholder.
- */
-
-export const testimonials = [
-  {
-    name: "Mrs. Fathima Begum",
-    detail: "Parent of Nursery student",
-    quote:
-      "My child enjoys coming to school every day. The teachers are caring and make learning fun for little children.",
-  }, // 1
-  {
-    name: "Mr. Ramesh Kumar",
-    detail: "Parent of LKG student",
-    quote:
-      "We are happy with the way our child is learning. The teachers give proper attention and encourage children to participate.",
-  }, // 2
-  {
-    name: "Mrs. Ayesha Parveen",
-    detail: "Parent of UKG student",
-    quote:
-      "I have noticed improvement in my child's speaking skills and confidence. The learning environment is friendly and supportive.",
-  }, // 3
-  {
-    name: "Mrs. Lakshmi Devi",
-    detail: "Parent of Class 1 student",
-    quote:
-      "The teachers explain lessons patiently and help children understand their basics. We are satisfied with our child's progress.",
-  }, // 4
-  {
-    name: "Mr. Mohammed Irfan",
-    detail: "Parent of Class 2 student",
-    quote:
-      "The school gives importance to both education and good manners. We appreciate the teachers' dedication and support.",
-  }, // 5
-  {
-    name: "Mrs. Sunitha Reddy",
-    detail: "Parent of Class 3 student",
-    quote:
-      "The digital classroom facilities make lessons more interesting. My child is excited to share what they learn at school.",
-  }, // 6
-  {
-    name: "Mrs. Shabana Taj",
-    detail: "Parent of Class 4 student",
-    quote:
-      "We appreciate the friendly teachers and the school's focus on academic learning. Communication with parents is important to us.",
-  }, // 7
-  {
-    name: "Mr. Suresh Babu",
-    detail: "Parent of Class 5 student",
-    quote:
-      "The school provides a good environment for children to learn and grow. We are pleased with the attention given to students.",
-  }, // 8
-  {
-    name: "Mrs. Nilofer Sultana",
-    detail: "Parent of Class 6 student",
-    quote:
-      "My child is becoming more confident in studies and classroom activities. We value the encouragement provided by the teachers.",
-  }, // 9
-  {
-    name: "Mrs. Padmavathi",
-    detail: "Parent of Class 7 student",
-    quote:
-      "The school encourages discipline, responsibility and regular learning. We are glad to see our child developing good habits.",
-  }, // 10
-  {
-    name: "Mr. Abdul Rahman",
-    detail: "Parent of Class 8 student",
-    quote:
-      "We appreciate the school's efforts to build strong academic foundations and prepare students for the next stage of education.",
-  }, // 11
-  {
-    name: "Mrs. Kavitha",
-    detail: "Parent of Nursery student",
-    quote:
-      "The teachers are kind and welcoming. My little one feels comfortable at school, which gives us peace of mind.",
-  }, // 12
-  {
-    name: "Mr. Sameer Ahmed",
-    detail: "Parent of LKG student",
-    quote:
-      "Our child is learning new words, numbers and everyday skills. We appreciate the patient approach of the teachers.",
-  }, // 13
-  {
-    name: "Mrs. Anuradha",
-    detail: "Parent of UKG student",
-    quote:
-      "The school helps children develop confidence and communication skills. We are happy with the learning experience.",
-  }, // 14
-  {
-    name: "Mrs. Rukhsana Begum",
-    detail: "Parent of Class 1 student",
-    quote:
-      "The teachers make learning enjoyable and encourage children to ask questions. It is wonderful to see our child becoming curious.",
-  }, // 15
-  {
-    name: "Mr. Venkatesh",
-    detail: "Parent of Class 2 student",
-    quote:
-      "We like the focus on basic concepts and regular practice. Our child is gradually becoming more independent with schoolwork.",
-  }, // 16
-  {
-    name: "Mrs. Saira Banu",
-    detail: "Parent of Class 3 student",
-    quote:
-      "The school provides a supportive atmosphere where children can learn at their own pace. We appreciate the teachers' efforts.",
-  }, // 17
-  {
-    name: "Mrs. Geetha Kumari",
-    detail: "Parent of Class 4 student",
-    quote:
-      "We are pleased with the school's emphasis on education, discipline and respect. These values are important for every child.",
-  }, // 18
-  {
-    name: "Mr. Imran Pasha",
-    detail: "Parent of Class 5 student",
-    quote:
-      "The teachers motivate students to work hard and take part in classroom activities. We appreciate their continued guidance.",
-  }, // 19
-  {
-    name: "Mrs. Swathi",
-    detail: "Parent of Class 6 student",
-    quote:
-      "The school encourages students to improve their knowledge and express their ideas. We value this balanced approach to learning.",
-  }, // 20
-  {
-    name: "Mrs. Farzana",
-    detail: "Parent of Class 7 student",
-    quote:
-      "We appreciate the school's efforts to develop academic skills, confidence and good character in students.",
-  }, // 21
-  {
-    name: "Mr. Prakash Rao",
-    detail: "Parent of Class 8 student",
-    quote:
-      "The teachers guide students in their studies and encourage them to take responsibility for their learning. We are grateful for their support.",
-  }, // 22
-  {
-    name: "Mrs. Haseena",
-    detail: "Parent of Nursery student",
-    quote:
-      "My child looks forward to school activities and enjoys learning through everyday experiences. The caring atmosphere is a big plus.",
-  }, // 23
-  {
-    name: "Mrs. Renuka",
-    detail: "Parent of LKG student",
-    quote:
-      "We are happy to see our child learning letters, numbers and social skills. The teachers make the early learning experience enjoyable.",
-  }, // 24
-  {
-    name: "Mr. Yusuf Ali",
-    detail: "Parent of UKG student",
-    quote:
-      "The school helps children prepare for primary classes by building confidence and strengthening their basic skills.",
-  }, // 25
-  {
-    name: "Mrs. Meena Kumari",
-    detail: "Parent of Class 1 student",
-    quote:
-      "The teachers encourage children to participate and learn with confidence. We appreciate the school's positive atmosphere.",
-  }, // 26
-  {
-    name: "Mrs. Tasneem",
-    detail: "Parent of Class 2 student",
-    quote:
-      "We are glad our child has a comfortable environment to study, make friends and develop good habits.",
-  }, // 27
-  {
-    name: "Mr. Srinivas",
-    detail: "Parent of Class 3 student",
-    quote:
-      "The school's focus on clear explanations and regular learning helps children build a strong foundation for the future.",
-  }, // 28
-  {
-    name: "Mrs. Rubina",
-    detail: "Parent of Class 5 student",
-    quote:
-      "We value the attention given to children's learning and behaviour. The school encourages students to keep improving.",
-  }, // 29
-  {
-    name: "Mrs. Padmaja",
-    detail: "Parent of Class 8 student",
-    quote:
-      "We appreciate the school's commitment to education and personal development. It is important to us that our child grows in both knowledge and confidence.",
-  }, // 30
-];
-
 export const news = [];
 export const principal = null;
 
@@ -882,6 +697,11 @@ export const seo = {
     title: "Gallery | Waseela English Medium School, Anantapur",
     description:
       "Photos of the Waseela English Medium School campus, classrooms, library, computer lab and school buses.",
+  },
+  testimonials: {
+    title: "Parent Testimonials | Waseela English Medium School, Anantapur",
+    description:
+      "Read what parents say about Waseela English Medium School, Anantapur — feedback from families of Nursery to 8th Standard students.",
   },
   privacy: {
     title:

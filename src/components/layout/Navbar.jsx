@@ -11,6 +11,21 @@ import {
   schoolApp,
 } from "../../data/schoolData";
 
+/**
+ * Menu items come from `navigation` in data/schoolData.js.
+ * The Testimonials page link is added before "Contact" if it is not already in that list,
+ * so the menu always shows it.
+ */
+const menu = navigation.some((n) => n.to === "/testimonials")
+  ? navigation
+  : (() => {
+      const i = navigation.findIndex((n) => n.to === "/contact");
+      const item = { label: "Testimonials", to: "/testimonials" };
+      return i === -1
+        ? [...navigation, item]
+        : [...navigation.slice(0, i), item, ...navigation.slice(i)];
+    })();
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -42,7 +57,7 @@ export default function Navbar() {
   }, [open]);
 
   const linkClass = ({ isActive }) =>
-    `relative py-2 text-[0.9rem] font-medium transition-colors after:absolute after:-bottom-1 after:left-1/2 after:h-[2px] after:-translate-x-1/2 after:rounded-full after:bg-gold after:transition-all after:duration-300 ${
+    `relative whitespace-nowrap py-2 text-[0.88rem] font-medium 2xl:text-[0.92rem] transition-colors after:absolute after:-bottom-1 after:left-1/2 after:h-[2px] after:-translate-x-1/2 after:rounded-full after:bg-gold after:transition-all after:duration-300 ${
       isActive
         ? "text-gold-dark after:w-full"
         : "text-navy-900 hover:text-gold-dark after:w-0 hover:after:w-full"
@@ -107,12 +122,12 @@ export default function Navbar() {
       >
         <nav
           aria-label="Main"
-          className="container-site flex h-[80px] items-center justify-between gap-6"
+          className="container-site flex h-[80px] items-center justify-between gap-4 2xl:gap-6"
         >
           <Logo />
 
-          <ul className="hidden items-center gap-7 xl:flex">
-            {navigation.map((item) => (
+          <ul className="hidden items-center gap-5 xl:flex 2xl:gap-7">
+            {menu.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
@@ -130,7 +145,7 @@ export default function Navbar() {
               href={links.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden min-h-[44px] items-center gap-2 rounded-full bg-gold px-5 text-sm font-semibold text-navy-950 shadow-glow transition hover:-translate-y-0.5 hover:bg-[#F0B04F] sm:inline-flex"
+              className="hidden min-h-[44px] items-center gap-2 rounded-full bg-gold px-5 text-sm font-semibold text-navy-950 shadow-glow transition hover:-translate-y-0.5 hover:bg-[#F0B04F] sm:inline-flex whitespace-nowrap"
             >
               Admissions <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
@@ -183,7 +198,7 @@ export default function Navbar() {
         </div>
 
         <ul className="container-site flex flex-1 flex-col overflow-y-auto py-6">
-          {navigation.map((item, i) => (
+          {menu.map((item, i) => (
             <li
               key={item.to}
               className="border-b border-navy-900/10"
@@ -200,7 +215,7 @@ export default function Navbar() {
                 end={item.to === "/"}
                 tabIndex={open ? 0 : -1}
                 className={({ isActive }) =>
-                  `flex min-h-[56px] items-center justify-between font-serif text-2xl font-semibold ${isActive ? "text-gold-dark" : "text-navy-900"}`
+                  `flex min-h-[52px] items-center justify-between font-serif text-2xl font-semibold ${isActive ? "text-gold-dark" : "text-navy-900"}`
                 }
               >
                 {item.label}

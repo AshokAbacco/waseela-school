@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Facilities from "./pages/Facilities";
 import Gallery from "./pages/Gallery";
+import Testimonials from "./pages/Testimonials";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -20,9 +21,13 @@ export default function App() {
         <Route path="mission" element={<Mission />} />
         <Route path="facilities" element={<Facilities />} />
         <Route path="gallery" element={<Gallery />} />
+        <Route path="testimonials" element={<Testimonials />} />
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />
-        <Route path="privacy-policy" element={<Navigate to="/privacy" replace />} />
+        <Route
+          path="privacy-policy"
+          element={<Navigate to="/privacy" replace />}
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
