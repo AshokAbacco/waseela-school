@@ -57,7 +57,7 @@ export default function Navbar() {
   }, [open]);
 
   const linkClass = ({ isActive }) =>
-    `relative whitespace-nowrap py-2 text-[0.88rem] font-medium 2xl:text-[0.92rem] transition-colors after:absolute after:-bottom-1 after:left-1/2 after:h-[2px] after:-translate-x-1/2 after:rounded-full after:bg-gold after:transition-all after:duration-300 ${
+    `relative whitespace-nowrap py-2 text-[0.82rem] font-medium xl:text-[0.88rem] 2xl:text-[0.92rem] transition-colors after:absolute after:-bottom-1 after:left-1/2 after:h-[2px] after:-translate-x-1/2 after:rounded-full after:bg-gold after:transition-all after:duration-300 ${
       isActive
         ? "text-gold-dark after:w-full"
         : "text-navy-900 hover:text-gold-dark after:w-0 hover:after:w-full"
@@ -122,11 +122,11 @@ export default function Navbar() {
       >
         <nav
           aria-label="Main"
-          className="container-site flex h-[80px] items-center justify-between gap-4 2xl:gap-6"
+          className="container-site flex h-[80px] items-center justify-between gap-4 lg:gap-3 xl:gap-4 2xl:gap-6"
         >
           <Logo />
 
-          <ul className="hidden items-center gap-5 xl:flex 2xl:gap-7">
+          <ul className="hidden items-center gap-3.5 lg:flex xl:gap-5 2xl:gap-7">
             {menu.map((item) => (
               <li key={item.to}>
                 <NavLink
@@ -145,14 +145,14 @@ export default function Navbar() {
               href={links.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden min-h-[44px] items-center gap-2 rounded-full bg-gold px-5 text-sm font-semibold text-navy-950 shadow-glow transition hover:-translate-y-0.5 hover:bg-[#F0B04F] sm:inline-flex whitespace-nowrap"
+              className="hidden min-h-[44px] items-center gap-2 rounded-full bg-gold px-5 lg:px-4 xl:px-5 text-sm font-semibold text-navy-950 shadow-glow transition hover:-translate-y-0.5 hover:bg-[#F0B04F] sm:inline-flex whitespace-nowrap"
             >
               Admissions <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
             <button
               ref={toggleRef}
               type="button"
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full text-navy-900 transition hover:bg-peach xl:hidden"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full text-navy-900 transition hover:bg-peach lg:hidden"
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -174,7 +174,7 @@ export default function Navbar() {
         aria-modal="true"
         aria-label="Site menu"
         aria-hidden={!open}
-        className={`fixed inset-0 z-[70] flex flex-col bg-cream transition-all duration-300 xl:hidden ${
+        className={`fixed inset-0 z-[70] flex flex-col bg-cream transition-all duration-300 lg:hidden ${
           open
             ? "visible opacity-100"
             : "pointer-events-none invisible opacity-0"
